@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, Input, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '../services/products.service';
-import { first } from 'rxjs/operators';
-import { ProductNew, Product } from '../models/product.model';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { ProductNew } from '../models/product.model';
+import { ProductsService } from '../services/products.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -21,15 +21,18 @@ export class AddProductComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' :
-        '';
+    return this.email.hasError('required')
+      ? 'You must enter a value'
+      : this.email.hasError('email')
+      ? 'Not a valid email'
+      : '';
   }
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data: any,
     private route: ActivatedRoute,
     private productsService: ProductsService,
+    private router: Router
   ) {
     this.categoryIds = [];
     if (data) {
@@ -41,33 +44,34 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   addProduct() {
     const currentProduct = {
       Name: this.name,
       Description: this.description,
       Url: this.url,
-      CategoryIds: this.categoryIds,
+      CategoryIds: this.categoryIds
     };
-    this.productsService.addProduct(currentProduct).pipe(first()).subscribe(newProduct => {
-      console.log(newProduct);
-    });
-
+    this.productsService
+      .addProduct(currentProduct)
+      .pipe(first())
+      .subscribe(newProduct => {
+        console.log(newProduct);
+        this.router.navigateByUrl('/');
+      });
   }
   updateProduct() {
     const currentProduct = {
       Name: this.name,
       Description: this.description,
       Url: this.url,
-      CategoryIds: this.categoryIds,
+      CategoryIds: this.categoryIds
     };
-    this.productsService.updateProduct(currentProduct, this.productId).pipe(first()).subscribe(newProduct => {
-      console.log(newProduct);
-    });
-
+    this.productsService
+      .updateProduct(currentProduct, this.productId)
+      .pipe(first())
+      .subscribe(newProduct => {
+        console.log(newProduct);
+      });
   }
-
-
 }
