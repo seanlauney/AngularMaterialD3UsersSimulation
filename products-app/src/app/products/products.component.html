@@ -1,14 +1,32 @@
-<mat-spinner *ngIf="!products?.length"></mat-spinner>
-<mat-grid-list cols="4" gutterSize="2" rowHeight="3:1">
-  <mat-grid-tile *ngFor="let product of products">
-    <mat-card [routerLink]="['/product', product.ProductId]" fxFlex="25">
+<mat-grid-list
+  cols="4"
+  gutterSize="5px"
+  rowHeight="3:1"
+>
+  <mat-grid-tile
+    *ngFor="let product of products; let i = index"
+    [colspan]="1"
+    [rowspan]="3"
+  >
+    <mat-card [routerLink]="['/product', product.ProductId]">
       <mat-card-header>
-        <div mat-card-avatar class="photo">
-          <mat-icon>supervised_user_circle</mat-icon>
-        </div>
+        <img
+          mat-card-avatar
+          src="https://source.unsplash.com/random/200x200"
+        >
         <mat-card-title>{{product?.Name}}</mat-card-title>
         <mat-card-subtitle>{{product?.ProductId}}</mat-card-subtitle>
       </mat-card-header>
+      <mat-card-content>
+        <mat-spinner *ngIf="!products?.length || spinner"></mat-spinner>
+        <div class="photo">
+          <img
+            mat-card-image
+            src="https://source.unsplash.com/collection/+ {{i}} +/800x600"
+            (load)="stopSpinner()"
+          >
+        </div>
+      </mat-card-content>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>

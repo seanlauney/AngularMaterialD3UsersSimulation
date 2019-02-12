@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../services/products.service';
 import { first } from 'rxjs/operators';
 import { Product } from '../models/product.model';
-
-
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -12,13 +10,18 @@ import { Product } from '../models/product.model';
 })
 export class ProductsComponent implements OnInit {
   products: Product[];
-  constructor(
-    private productsService: ProductsService
-  ) { }
+  spinner = true;
+  constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
-    this.productsService.getProducts().pipe(first()).subscribe(products => {
-      this.products = products;
-    });
+    this.productsService
+      .getProducts()
+      .pipe(first())
+      .subscribe(products => {
+        this.products = products;
+      });
+  }
+  stopSpinner() {
+    this.spinner = false;
   }
 }

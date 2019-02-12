@@ -1,11 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '../services/products.service';
-import { first } from 'rxjs/operators';
-import { Product } from '../models/product.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { AddProductComponent } from '../add-product/add-product.component';
-
+import { Product } from '../models/product.model';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-product',
@@ -15,10 +14,15 @@ import { AddProductComponent } from '../add-product/add-product.component';
 export class ProductComponent implements OnInit, OnDestroy {
   id: number;
   product: Product[];
+  spinner = true;
 
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService, public dialog: MatDialog) { }
+  constructor(
+    private route: ActivatedRoute,
+    private productsService: ProductsService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.getProduct();
@@ -29,7 +33,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   openDialog(currentProduct): void {
     const dialogRef = this.dialog.open(AddProductComponent, {
       width: '450px',
-      data: currentProduct,
+      data: currentProduct
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -39,9 +43,15 @@ export class ProductComponent implements OnInit, OnDestroy {
   getProduct(): void {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params.id;
-      this.productsService.getProduct(this.id).pipe(first()).subscribe(product => {
-        this.product = product;
-      });
+      this.productsService
+        .getProduct(this.id)
+        .pipe(first())
+        .subscribe((product: Product[]) => {
+          this.product = product;
+        });
     });
+  }
+  stopSpinner() {
+    this.spinner = false;
   }
 }
