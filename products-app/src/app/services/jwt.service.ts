@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +10,7 @@ export class JwtService {
     localStorage.setItem('access_token', this.access_token);
   }
   getToken() {
+    console.log(localStorage.getItem('access_token'));
     return localStorage.getItem('access_token');
-
   }
 }
