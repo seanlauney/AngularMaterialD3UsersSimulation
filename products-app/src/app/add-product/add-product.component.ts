@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ProductNew } from '../models/product.model';
@@ -32,7 +32,8 @@ export class AddProductComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any,
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     this.categoryIds = [];
     if (data) {
@@ -56,7 +57,9 @@ export class AddProductComponent implements OnInit {
       .addProduct(currentProduct)
       .pipe(first())
       .subscribe(newProduct => {
-        console.log(newProduct);
+        this.snackBar.open('Product Added', '', {
+          duration: 2000
+        });
         this.router.navigateByUrl('/');
       });
   }
@@ -71,7 +74,9 @@ export class AddProductComponent implements OnInit {
       .updateProduct(currentProduct, this.productId)
       .pipe(first())
       .subscribe(newProduct => {
-        console.log(newProduct);
+        this.snackBar.open('Product Updated', '', {
+          duration: 2000
+        });
       });
   }
 }
