@@ -1,0 +1,14 @@
+<mat-spinner *ngIf="!products?.length"></mat-spinner>
+<mat-grid-list cols="4" gutterSize="2" rowHeight="3:1">
+  <mat-grid-tile *ngFor="let product of products">
+    <mat-card [routerLink]="['/product', product.ProductId]" fxFlex="25">
+      <mat-card-header>
+        <div mat-card-avatar class="photo">
+          <mat-icon>supervised_user_circle</mat-icon>
+        </div>
+        <mat-card-title>{{product?.Name}}</mat-card-title>
+        <mat-card-subtitle>{{product?.ProductId}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

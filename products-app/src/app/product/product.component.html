@@ -1,0 +1,20 @@
+<mat-card class="example-card">
+  <mat-spinner *ngIf="!product"></mat-spinner>
+
+  <mat-card-header>
+    <div mat-card-avatar class="photo">
+      <mat-icon>supervised_user_circle</mat-icon>
+    </div>
+    <mat-card-title>{{product?.Name}}</mat-card-title>
+    <mat-card-subtitle>{{product?.ProductId}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{product?.Description}} </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="openDialog(product)">
+      <mat-icon>border_color</mat-icon>Edit
+    </button>
+  </mat-card-actions>
+</mat-card>

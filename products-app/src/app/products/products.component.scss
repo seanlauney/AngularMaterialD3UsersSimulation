@@ -1,0 +1,41 @@
+.photo {
+    contain: content;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.name {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+::ng-deep {
+    mat-card {
+        cursor: pointer;
+        min-width: 375px;
+        .mat-card-header-text {
+            text-transform: uppercase;
+        }
+        p {
+            color: white;
+            height: 60px;
+            background: #80808080;
+            font-size: 1em;
+            padding: 1em;
+            font-family: roboto;
+        }
+    }
+}
+
+.photo {
+    contain: content;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

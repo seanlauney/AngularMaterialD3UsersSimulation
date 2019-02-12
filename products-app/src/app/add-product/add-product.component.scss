@@ -1,0 +1,14 @@
+.example-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+::ng-deep {
+    mat-form-field {
+        width: 100%;
+    }
+}

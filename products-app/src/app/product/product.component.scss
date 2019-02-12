@@ -1,0 +1,30 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+    ::ng-deep {
+        mat-card {
+            width: 50%;
+            min-height: 300px;
+            .mat-card-header-text {
+                text-transform: uppercase;
+            }
+            p {
+                color: white;
+                height: 60px;
+                background: #80808080;
+                font-size: 1em;
+                padding: 1em;
+                font-family: roboto;
+            }
+        }
+    }
+    .photo {
+        contain: content;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
