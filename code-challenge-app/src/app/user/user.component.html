@@ -1,11 +1,11 @@
-<section>
+<section fxLayout="column">
   <mat-card fxFlex>
     <mat-card-title>Create a new user</mat-card-title>
     <form [formGroup]="userForm" autocomplete="off" novalidate (ngSubmit)="createUser(userForm.value)" fxLayout="column wrap"
       fxLayoutAlign="center center">
       <mat-card-content>
         <mat-form-field>
-          <input matInput #nameInput type="text" placeholder="Name" formControlName="name" id="name">
+          <input matInput #nameInput type="text" placeholder="Name" formControlName="name" id="name" [value]="userForm.get('name').value | titlecase">
           <mat-hint align="start">users name.</mat-hint>
           <mat-hint align="end">{{nameInput?.value.length}} / 60</mat-hint>
           <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
@@ -18,7 +18,7 @@
           <mat-hint align="start">years old</mat-hint>
           <mat-hint align="end">{{ageInput?.value.length}} / 3</mat-hint>
           <mat-error *ngIf="hasError('age', 'required')">Age is required</mat-error>
-          <mat-error *ngIf="hasError('age', 'maxlength')">You have more than 2 characters</mat-error>
+          <mat-error *ngIf="hasError('age', 'maxlength')">You have more than 3 characters</mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -27,7 +27,7 @@
           <mat-hint align="start">lbs</mat-hint>
           <mat-hint align="end">{{weightInput?.value.length}} / 3</mat-hint>
           <mat-error *ngIf="hasError('weight', 'required')">weight is required</mat-error>
-          <mat-error *ngIf="hasError('weight', 'maxlength')">You have more than 2 characters</mat-error>
+          <mat-error *ngIf="hasError('weight', 'maxlength')">You have more than 3 characters</mat-error>
         </mat-form-field>
         <h4 *ngIf="!friendAutoOptions?.length">
           <div>
@@ -35,24 +35,38 @@
           </div>
           you need to create at least one user before they can have friends.
         </h4>
-        <mat-form-field *ngIf="!friendAutoOptions?.length">
-          <mat-select placeholder="Friends" id="friends" formControlName="friends" multiple>
+        <mat-form-field *ngIf="friendAutoOptions?.length">
+          <mat-select #friendsSelect placeholder="Friends" id="friends" formControlName="friends" multiple [required]="friendAutoOptions?.length">
             <mat-option *ngFor="let friend of friendAutoOptions" [value]="friend">
               {{friend.name}}
             </mat-option>
           </mat-select>
-          <mat-hint align="start">add a friends name then press enter.</mat-hint>
-          <mat-hint align="end">{{friends.length}} friends</mat-hint>
+          <mat-hint align="start">add some friends.</mat-hint>
+          <mat-hint align="end">{{friendsSelect.selected.length}} friends</mat-hint>
           <mat-error *ngIf="hasError('friends', 'required')">At least one friend is required</mat-error>
         </mat-form-field>
       </mat-card-content>
-      <mat-card-actions align="center">
-        <button mat-raised-button color="primary" [disabled]="!userForm.valid">
+      <mat-card-actions align="center" fxLayout="row">
+        <button mat-raised-button color="primary" [disabled]="!userForm.valid" fxFlex>
           <mat-icon>
             save
-          </mat-icon>Create User
+          </mat-icon>
+          Create User
+        </button>
+        <button mat-raised-button color="accent" fxFlex (click)="userForm.reset()">
+          <mat-icon>
+            cancel
+          </mat-icon>Clear User
         </button>
       </mat-card-actions>
     </form>
+  </mat-card>
+  <mat-divider></mat-divider>
+  <mat-spinner *ngIf="spinner" [diameter]="30"></mat-spinner>
+  <mat-card fxFlex *ngIf="showLastCreatedUser">
+    <mat-card-title>New User Created</mat-card-title>
+    <mat-card-content>
+      <app-user-details [user]="friendAutoOptions[friendAutoOptions.length -1]"></app-user-details>
+    </mat-card-content>
   </mat-card>
 </section>

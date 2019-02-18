@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../models/user';
 import { UserPhotoService } from '../services/user-photo.service';
 import { first } from 'rxjs/operators';
@@ -12,32 +11,22 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit {
-  user: User;
   image: any;
+  @Input() user: User;
+
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) data: any,
     private userPhotoService: UserPhotoService,
 
   ) {
-    if (data) {
-      this.user = {
-        name: data.name,
-        friends: data.friends,
-        weight: data.weight,
-        age: data.age,
-      }
-    }
+    this.user = this.user;
   }
+
 
   ngOnInit() {
     this.userPhotoService.getPhotos(1).pipe(first())
       .subscribe(result => {
         this.image = result['results'][0].picture;
       });
-
-
   }
-
-
 }

@@ -3,6 +3,7 @@ import { UserPhotoService } from './user-photo.service';
 import { User } from '../models/user';
 import { of, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { FormatService } from './format.service';
 
 
 @Injectable({
@@ -12,13 +13,10 @@ export class RandomUsersService {
   users: User[];
   friends: User[] = [];
 
-  constructor(private userPhotoService: UserPhotoService) { }
-  titleCase(text: string) {
-    if (!text) { return text; }
-    return text.split(' ')
-      .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
-      .join(' ');
-  }
+  constructor(
+    private userPhotoService: UserPhotoService,
+    private formatService: FormatService,
+  ) { }
   getFriends(max: number) {
     const random = this.friends.sort(() => 0.5 - Math.random());
     return random.slice(0, max).map(item => {
@@ -38,7 +36,7 @@ export class RandomUsersService {
       .pipe(map(users => {
         this.users = users['results'].map(user => {
           const currentUser: User = {
-            name: this.titleCase(user.name.first),
+            name: this.formatService.titleCase(user.name.first),
             age: user.dob.age,
             weight: Math.floor((user.location.postcode / 1000) + 100) || 155,
             friends: this.getFriends(Math.floor(Math.random() * 15) + 1),

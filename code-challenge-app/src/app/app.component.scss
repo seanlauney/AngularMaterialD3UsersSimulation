@@ -1,4 +1,8 @@
 ::ng-deep {
+  mat-drawer {
+    max-width: 24vw;
+  }
+
   mat-toolbar-row {
     cursor: pointer;
   }

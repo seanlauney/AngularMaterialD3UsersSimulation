@@ -5,7 +5,7 @@ import { Link } from './models/link';
 import { ForceDirectedGraph } from './models/force-directed-graph';
 import * as d3 from 'd3';
 import { MatDialog } from '@angular/material';
-import { UserDetailsComponent } from '../user-details/user-details.component';
+import { UserDetailsDialogComponent } from '../user-details-dialog/user-details-dialog.component';
 
 @Injectable()
 export class D3Service {
@@ -73,7 +73,7 @@ export class D3Service {
       d3element.on('click', clicked)
 
       function clicked() {
-        _this.dialog.open(UserDetailsComponent, {
+        _this.dialog.open(UserDetailsDialogComponent, {
           minWidth: '450px',
           minHeight: '100%',
           data: node.user

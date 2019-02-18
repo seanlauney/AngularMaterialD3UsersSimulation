@@ -34,6 +34,7 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
+import { UserDetailsDialogComponent } from './user-details-dialog/user-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatSliderModule } from '@angular/material/slider';
     ClickableDirective,
     UserDetailsComponent,
     UserTableComponent,
+    UserDetailsDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatSliderModule
   ],
   providers: [D3Service],
-  entryComponents: [UserDetailsComponent, UserTableComponent],
+  entryComponents: [UserDetailsDialogComponent, UserTableComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

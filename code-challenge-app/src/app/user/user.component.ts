@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/users.service';
 import { User } from '../models/user';
-import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-user',
@@ -17,12 +16,13 @@ export class UserComponent implements OnInit {
   friends: any[];
   tempTest: any[] = [];
   friendAutoOptions: User[] = [];
+  showLastCreatedUser = false;
+  spinner = false;
 
   constructor(
     private userService: UserService,
   ) {
     this.friends = [];
-
   }
   ngOnInit() {
     this.userService.users$.subscribe((users: User[]) => {
@@ -32,8 +32,8 @@ export class UserComponent implements OnInit {
     this.userForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(60)]),
       friends: new FormControl([]),
-      weight: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(3)]),
-      age: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(3)])
+      weight: new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000)]),
+      age: new FormControl('', [Validators.required, Validators.min(1), Validators.max(200)])
     });
   }
 
@@ -53,14 +53,15 @@ export class UserComponent implements OnInit {
       age: userFormValue.age,
     };
     this.userService.addUser(user).subscribe(res => {
+      this.spinner = true;
       // console.log(res);
       setTimeout(() => {
+        this.showLastCreatedUser = true;
         this.userForm.reset();
+        this.spinner = false;
       }, 800);
     }, (error => {
       console.log(error, user);
     }));
-
-
   }
 }
