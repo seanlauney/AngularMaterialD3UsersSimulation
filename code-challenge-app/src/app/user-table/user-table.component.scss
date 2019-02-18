@@ -14,10 +14,19 @@
     min-width: 80vw;
     min-height: 80vh;
   }
+
+  mat-slider {
+    width: 90%;
+  }
 }
 
 h3 {
   color: #3F51B5;
+}
+
+h4 {
+  color: #673AB7;
+  font-family: roboto;
 }
 
 button {
@@ -36,8 +45,18 @@ button {
   padding-top: 3em;
 }
 
-h3 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'roboto';
+}
+
+h1 {
+  text-align: center;
+  color: #F44336;
 }
 
 .truncate {

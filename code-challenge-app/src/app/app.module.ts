@@ -1,4 +1,4 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
@@ -32,8 +32,8 @@ import { ClickableDirective } from './d3/directives/clickable.directive';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatAutocompleteModule
+    MatSliderModule
   ],
   providers: [D3Service],
   entryComponents: [UserDetailsComponent, UserTableComponent],

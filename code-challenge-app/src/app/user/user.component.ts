@@ -46,7 +46,6 @@ export class UserComponent implements OnInit {
     }
   }
   private executeOwnerCreation = (userFormValue) => {
-    console.log(userFormValue);
     const user: User = {
       name: userFormValue.name,
       friends: userFormValue.friends,
@@ -54,7 +53,7 @@ export class UserComponent implements OnInit {
       age: userFormValue.age,
     };
     this.userService.addUser(user).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       setTimeout(() => {
         this.userForm.reset();
       }, 800);

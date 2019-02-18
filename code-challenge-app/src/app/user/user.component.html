@@ -35,8 +35,8 @@
           </div>
           you need to create at least one user before they can have friends.
         </h4>
-        <mat-form-field>
-          <mat-select placeholder="Friends" id="friends" formControlName="friends" multiple [disabled]="!friendAutoOptions?.length">
+        <mat-form-field *ngIf="!friendAutoOptions?.length">
+          <mat-select placeholder="Friends" id="friends" formControlName="friends" multiple>
             <mat-option *ngFor="let friend of friendAutoOptions" [value]="friend">
               {{friend.name}}
             </mat-option>

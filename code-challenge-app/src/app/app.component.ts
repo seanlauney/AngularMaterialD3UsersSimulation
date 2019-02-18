@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UserTableComponent } from './user-table/user-table.component';
+import { UserService } from './services/users.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +10,10 @@ import { UserTableComponent } from './user-table/user-table.component';
 })
 export class AppComponent implements OnInit {
   title = 'code-challenge-app';
+  userCount: number;
   constructor(
     public dialog: MatDialog,
+    public userService: UserService,
   ) {
   }
   editUsers(): void {
@@ -19,5 +23,10 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.userService.users$.subscribe(users => {
+      this.userCount = users.length;
+    });
+
+  }
 }

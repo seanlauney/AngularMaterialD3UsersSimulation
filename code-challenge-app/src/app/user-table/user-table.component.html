@@ -39,8 +39,15 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
-<div class="footer">
-  <button mat-raised-button color="primary" (click)="resetUsers()">Load Mock Data</button>
-  <button mat-raised-button color="accent" (click)="clearUsers()">Clear Cache</button>
-
+<h1 *ngIf="!dataSource?.filteredData.length">No Users </h1>
+<mat-divider></mat-divider>
+<div class="footer" fxlayout="row">
+  <div fxFlex>
+    <mat-slider [max]="maxCount" min="1" thumbLabel="true" tickInterval="1" [(ngModel)]="mockCount"></mat-slider>
+    <h4> Number of mock users to load ({{mockCount}}) </h4>
+  </div>
+  <div fxFlex>
+    <button mat-raised-button color="primary" (click)="resetUsers()">Load Mock Data</button>
+    <button mat-raised-button color="accent" (click)="clearUsers()">Clear Cache</button>
+  </div>
 </div>

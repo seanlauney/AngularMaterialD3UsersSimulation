@@ -16,6 +16,8 @@ export class UserTableComponent implements OnInit {
   dataSource = new MatTableDataSource<User>();
   selection = new SelectionModel<User>(true, []);
   remove: number;
+  mockCount = 500;
+  maxCount = 1000;
   constructor(private userService: UserService) { }
   ngOnInit() {
     this.userService.users$.subscribe(users => {
@@ -25,7 +27,7 @@ export class UserTableComponent implements OnInit {
   removeUser(index: number) {
     this.remove = index;
     this.userService.removeUser(index).subscribe(res => {
-      console.log(res, index);
+      // console.log(res, index);
       setTimeout(() => {
         this.remove = null;
       }, 500);
@@ -33,7 +35,7 @@ export class UserTableComponent implements OnInit {
     });
   }
   resetUsers() {
-    this.userService.loadMockData(100);
+    this.userService.loadMockData(this.mockCount);
   }
   clearUsers() {
     this.userService.clearCache();

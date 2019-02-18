@@ -28,13 +28,13 @@ export class RandomUsersService {
       item.friends.map(current => {
         current.friends = [];
         return current;
-      })
+      });
       return item;
     });
   }
 
   getUsers(max?: number): Observable<any> {
-    return this.userPhotoService.getPhotos()
+    return this.userPhotoService.getPhotos(max)
       .pipe(map(users => {
         this.users = users['results'].map(user => {
           const currentUser: User = {

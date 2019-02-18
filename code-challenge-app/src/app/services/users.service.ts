@@ -9,7 +9,6 @@ import { RandomUsersService } from './random-users.service';
 })
 export class UserService {
     users$: Subject<User[]> = new BehaviorSubject<User[]>([]);
-    friends$: Subject<string[]> = new BehaviorSubject<string[]>([]);
 
     constructor(
         private snackBar: MatSnackBar,
@@ -30,16 +29,8 @@ export class UserService {
     }
     addUser(user: User): Observable<any> {
         const users = [...JSON.parse(localStorage.getItem('users'))];
-        const friendsCheck = localStorage.getItem('friends');
-        let friends: any;
-        if (friendsCheck) {
-            friends = [...JSON.parse(localStorage.getItem('friends'))];
-        } else {
-            friends = [];
-        }
-        friends.push(user.friends);
         users.push(user);
-        this.updateLocalStorage(users, friends);
+        this.updateLocalStorage(users);
         this.snackBar.open('User Added', '', {
             duration: 2000
         });
@@ -61,9 +52,5 @@ export class UserService {
     private updateLocalStorage(users: User[], friends?: string[]) {
         localStorage.setItem('users', JSON.stringify(users));
         this.users$.next(JSON.parse(localStorage.getItem('users')));
-        if (friends) {
-            localStorage.setItem('friends', JSON.stringify(friends));
-            this.friends$.next(JSON.parse(localStorage.getItem('friends')));
-        }
     }
 }

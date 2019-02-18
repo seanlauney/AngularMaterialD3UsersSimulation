@@ -40,7 +40,7 @@ export class ChartComponent implements OnInit {
   private setUpdateLinks(users: User[]) {
     for (let i = 0; i < users.length; i++) {
       const user = users[i];
-      if (user) {
+      if (user && Array.isArray(user.friends)) {
         for (let j = 0; j < user.friends.length; j++) {
           /** increasing connections toll on connecting nodes */
           this.nodes[i].linkCount++;
