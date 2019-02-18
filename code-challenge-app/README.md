@@ -1,6 +1,8 @@
 # Code Challenge App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
+## Node Modules 
+Run `npm install` to download and install all required js modules.
 
 ## Development server
 
@@ -19,7 +21,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 <article>
-  <h1>Code Challenge App</h1>
   <h4>Designed to give a visual representation of friend's and their relationships with their friends.</h4>
 
   <h3>Gettings started </h3>
