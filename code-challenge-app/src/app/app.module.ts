@@ -35,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { UserDetailsDialogComponent } from './user-details-dialog/user-details-dialog.component';
+import { ReadmeComponent } from './readme/readme.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { UserDetailsDialogComponent } from './user-details-dialog/user-details-d
     UserDetailsComponent,
     UserTableComponent,
     UserDetailsDialogComponent,
+    ReadmeComponent,
   ],
   imports: [
     BrowserModule,
