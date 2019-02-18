@@ -27,7 +27,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   <p>The quickest way to build and interact with the model is to load mock data.</p>
   <ol>
     <li>
-      <p>1. Click the edit users button on the top toolbar.</p>
+      <p>Click the edit users button on the top toolbar.</p>
     </li>
     <li>
       <p>User the slider at the bottom of the table to select the numbe of users to load, or leave at at the default
@@ -69,12 +69,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
       <p>To create a user, click the add user button, the user for will now be visible.</p>
     </li>
     <li>
-      <p>2. Fill out all the required fields, the friends field will only be visible if there are other user's
+      <p>Fill out all the required fields, the friends field will only be visible if there are other user's
         available in
         the model.</p>
     </li>
     <li>
-      <p>3. Clicking add user will create another model node for the new user.</p>
+      <p>Clicking add user will create another model node for the new user.</p>
     </li>
   </ol>
 </article>
