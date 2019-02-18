@@ -77,29 +77,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     </li>
   </ol>
 </article>
-<style>
-  * {
-    font-family: roboto;
-    background: #fbfbfb;
-  }
-
-  article {
-    padding: 2em;
-  }
-
-  h1 {
-    color: #3F51B5;
-  }
-
-  h3 {
-    color: #F44336;
-  }
-
-  h4 {
-    color: #2196F3;
-  }
-
-  p {
-    color: #3b4c54;
-  }
-</style>
