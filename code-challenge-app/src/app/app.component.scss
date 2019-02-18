@@ -1,5 +1,23 @@
 ::ng-deep {
-    mat-toolbar-row {
-        cursor: pointer;
-    }
+  mat-toolbar-row {
+    cursor: pointer;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 text {
+  font-family: 'roboto' !important;
+}
+
+.mat-drawer-content {
+  background: #80808026;
+
+  h2 {
+    padding-left: 5px;
+    color: #3F51B5;
+  }
 }

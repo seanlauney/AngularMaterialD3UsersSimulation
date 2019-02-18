@@ -1,0 +1,49 @@
+::ng-deep {
+
+  mat-cell:first-of-type,
+  mat-footer-cell:first-of-type,
+  mat-header-cell:first-of-type {
+    padding-left: 0px !important;
+  }
+
+  mat-card {
+    box-shadow: none;
+  }
+
+  mat-table {
+    min-width: 80vw;
+    min-height: 80vh;
+  }
+}
+
+h3 {
+  color: #3F51B5;
+}
+
+button {
+  margin-right: 1em;
+  width: 200px;
+}
+
+.table-container {
+  margin-top: 10px;
+  max-height: 20vw;
+  min-width: 70vw;
+  overflow: auto;
+}
+
+.footer {
+  padding-top: 3em;
+}
+
+h3 {
+  font-family: 'roboto';
+}
+
+.truncate {
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 5px;
+}

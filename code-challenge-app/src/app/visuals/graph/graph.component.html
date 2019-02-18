@@ -1,3 +1,17 @@
-<p>
-  graph works!
-</p>
+<div class="wrapper">
+  <img [src]="photo.picture.large" *ngFor="let photo of photos">
+  <img [src]="photo.picture.large" *ngFor="let photo of photos">
+
+  <div *ngIf="nodes?.length">
+    <svg #svg [attr.width]="_options.width" [attr.height]="_options.height" x="100%" y="100%">
+      <g [zoomableOf]="svg">
+        <g [linkVisual]="link" *ngFor="let link of links"></g>
+        <g [nodeVisual]="node" *ngFor="let node of nodes" [draggableNode]="node" [draggableInGraph]="graph"
+          [clickableNode]="node"></g>
+      </g>
+    </svg>
+  </div>
+  <div *ngIf="!nodes?.length" class="center">
+    <h1>Click the toolbar links above to add some users with friends, then watch the magic happen!</h1>
+  </div>
+</div>

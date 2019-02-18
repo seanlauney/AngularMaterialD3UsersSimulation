@@ -1,20 +1,37 @@
-.example-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.example-full-width {
+button {
   width: 100%;
 }
 
-::ng-deep {
+.friend-chips {
+  padding: 0.8em;
+}
 
-  mat-card {
-    box-shadow: none;
+form {
+  padding: 0.8em;
+}
+
+::ng-deep {
+  .mat-form-field-suffix {
+    cursor: pointer;
+    color: #3F51B5;
   }
 
+  mat-card-content,
+  mat-card-actions {
+    width: 100%;
+  }
+
+  mat-card-title {
+    color: #3F51B5;
+  }
 
   mat-form-field {
     width: 100%;
+    padding-top: 0.5em;
   }
+}
+
+h4 {
+  text-align: center;
+  color: #F44336;
 }

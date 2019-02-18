@@ -1,0 +1,23 @@
+.wrapper {
+  max-height: 200px;
+  overflow: auto
+}
+
+.photo {
+  contain: content;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.details {
+  text-align: center;
+}
+
+::ng-deep {
+  .mat-card-header-text {
+    width: 100%;
+  }
+}

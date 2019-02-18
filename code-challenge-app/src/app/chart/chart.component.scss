@@ -1,3 +1,19 @@
-.mySvg {
-  background-color: cadetblue;
+h4 {
+  font-family: 'roboto';
+  color: #F44336;
+}
+
+div {
+  flex-flow: row wrap;
+  display: flex;
+  padding-left: 3em;
+  background: white;
+
+  img {
+    max-width: 50%;
+  }
+}
+
+span {
+  font-style: italic;
 }

@@ -1,0 +1,46 @@
+<div class="table-container">
+  <h3>
+    <mat-icon>supervised_user_circle</mat-icon> Users
+    <small> ({{dataSource?.filteredData.length}} )</small>
+  </h3>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-spinner *ngIf="remove === dataSource.filteredData.indexOf(row)" [diameter]="25"></mat-spinner>
+        <button mat-button (click)="removeUser(dataSource.filteredData.indexOf(row))" color="accent" *ngIf="!remove">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="friends">
+      <mat-header-cell *matHeaderCellDef> Friends </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="truncate">
+        <div class="truncate">
+          <span *ngFor="let friend of element.friends">
+            {{ friend.name }},
+          </span>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="age">
+      <mat-header-cell *matHeaderCellDef> Age </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.age}} years old </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} lbs </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+<div class="footer">
+  <button mat-raised-button color="primary" (click)="resetUsers()">Load Mock Data</button>
+  <button mat-raised-button color="accent" (click)="clearUsers()">Clear Cache</button>
+
+</div>

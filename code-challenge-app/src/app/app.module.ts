@@ -6,9 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -25,9 +28,12 @@ import { LinkVisualComponent } from './visuals/shared/link-visual/link-visual.co
 import { ZoomableDirective } from './d3/directives/zoomable.directive';
 import { DraggableDirective } from './d3/directives/draggable.directive';
 import { D3Service } from './d3/d3.service';
-
-
-
+import { ClickableDirective } from './d3/directives/clickable.directive';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserTableComponent } from './user-table/user-table.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -39,6 +45,9 @@ import { D3Service } from './d3/d3.service';
     LinkVisualComponent,
     ZoomableDirective,
     DraggableDirective,
+    ClickableDirective,
+    UserDetailsComponent,
+    UserTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +57,7 @@ import { D3Service } from './d3/d3.service';
     MatGridListModule,
     MatCardModule,
     MatListModule,
+    MatExpansionModule,
     FlexLayoutModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -57,10 +67,15 @@ import { D3Service } from './d3/d3.service';
     FormsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatChipsModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   providers: [D3Service],
-  entryComponents: [],
+  entryComponents: [UserDetailsComponent, UserTableComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

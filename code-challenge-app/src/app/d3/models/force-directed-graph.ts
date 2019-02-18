@@ -62,7 +62,6 @@ export class ForceDirectedGraph {
         if (!options || !options.width || !options.height) {
             throw new Error('missing options when initializing simulation');
         }
-
         /** Creating the simulation */
         if (!this.simulation) {
             const ticker = this.ticker;

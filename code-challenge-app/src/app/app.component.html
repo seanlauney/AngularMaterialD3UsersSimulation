@@ -1,7 +1,23 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span (click)="openDialog()">Add Product / </span>
-    <span [routerLink]="['/products']">View Products </span>
+    <span>
+      <button mat-button (click)="drawer.toggle()">
+        <mat-icon>face</mat-icon>
+        Add User
+      </button>
+      <button mat-button (click)="editUsers()">
+        <mat-icon>supervised_user_circle</mat-icon> Edit Users
+      </button>
+    </span>
   </mat-toolbar-row>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<mat-drawer-container>
+  <mat-drawer #drawer>
+    <app-user></app-user>
+  </mat-drawer>
+  <mat-drawer-content>
+    <h2>Users</h2>
+    <mat-divider></mat-divider>
+    <app-chart></app-chart>
+  </mat-drawer-content>
+</mat-drawer-container>
