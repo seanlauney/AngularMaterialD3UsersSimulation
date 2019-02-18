@@ -1,4 +1,6 @@
 # Code Challenge App
+  <h4>Designed to give a visual representation of friend's and their relationships with their friends.</h4>
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
 ## Node Modules 
@@ -21,8 +23,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 <article>
-  <h4>Designed to give a visual representation of friend's and their relationships with their friends.</h4>
-
   <h3>Gettings started </h3>
   <p>The quickest way to build and interact with the model is to load mock data.</p>
   <ol>
