@@ -1,0 +1,1 @@
+{"ast":null,"code":"import _createClass from \"/Users/slauney/node_modules/@babel/runtime/helpers/esm/createClass.js\";\nimport _classCallCheck from \"/Users/slauney/node_modules/@babel/runtime/helpers/esm/classCallCheck.js\";\nexport var User = /*#__PURE__*/_createClass(function User() {\n  _classCallCheck(this, User);\n});","map":null,"metadata":{},"sourceType":"module"}

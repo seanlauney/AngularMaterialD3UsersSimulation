@@ -3,7 +3,7 @@ import APP_CONFIG from '../../app.config';
 export class Node implements d3.SimulationNodeDatum {
     // optional - defining optional implementation properties - required for relevant typing assistance
     index?: number;
-    user?: object;
+    user?: any;
     x?: number;
     y?: number;
     vx?: number;
